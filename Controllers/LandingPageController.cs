@@ -5,15 +5,17 @@ namespace veepee_dot_nerf.Controllers
 {
     public class LandingPageController : Controller
     {
-        // 
         // GET: /LandingPage/
-
-        public string Index()
+        public IActionResult Index(string name, int ID = 1)
         {
-            return "This is my default action...";
+            // return "This is my default action...";
+            // return HtmlEncoder.Default.Encode(
+            //     $"Hello {name}, ID: {ID}");
+            ViewData["msg"] = "Hello " + name;
+            ViewData["id"] = ID;
+            return View();
         }
 
-        // 
         // GET: /LandingPage/Welcome/ 
         public IActionResult Welcome()
         {
