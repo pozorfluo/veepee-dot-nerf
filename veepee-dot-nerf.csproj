@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>veepee_dot_nerf</RootNamespace>
+    <RootNamespace>VeepeeDotNerf</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

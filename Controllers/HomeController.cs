@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using veepee_dot_nerf.Models;
+using VeepeeDotNerf.Models;
 
-namespace veepee_dot_nerf.Controllers
+namespace VeepeeDotNerf.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace veepee_dot_nerf.Models
+namespace VeepeeDotNerf.Models
 {
     public class ErrorViewModel
     {

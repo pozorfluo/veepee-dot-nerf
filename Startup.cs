@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VeepeeDotNerf.Data;
 
-namespace veepee_dot_nerf
+namespace VeepeeDotNerf
 {
   public class Startup
   {
@@ -25,6 +27,12 @@ namespace veepee_dot_nerf
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllersWithViews();
+
+      services.AddDbContext<VeepeeDotNerfContext>(
+        options => options.UseSqlite(
+          Configuration.GetConnectionString("VeepeeDorNerfContext")
+        )
+      );
     }
 
     // This method gets called by the runtime. Use this method to configure the
@@ -52,8 +60,8 @@ namespace veepee_dot_nerf
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute(
-                  name: "default",
-                  pattern: "{controller=LandingPage}/{action=Index}/{id?}");
+          name: "default",
+          pattern: "{controller=LandingPage}/{action=Index}/{id?}");
       });
     }
   }

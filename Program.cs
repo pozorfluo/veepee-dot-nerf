@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace veepee_dot_nerf
+namespace VeepeeDotNerf
 {
     public class Program
     {

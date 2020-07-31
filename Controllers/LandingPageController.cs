@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 
-namespace veepee_dot_nerf.Controllers
+namespace VeepeeDotNerf.Controllers
 {
     public class LandingPageController : Controller
     {
