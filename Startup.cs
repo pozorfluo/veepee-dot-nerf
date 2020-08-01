@@ -30,7 +30,7 @@ namespace VeepeeDotNerf
 
       services.AddDbContext<VeepeeDotNerfContext>(
         options => options.UseSqlite(
-          Configuration.GetConnectionString("VeepeeDorNerfContext")
+          Configuration.GetConnectionString("VeepeeDotNerfContext")
         )
       );
     }
