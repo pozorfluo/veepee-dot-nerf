@@ -9,8 +9,8 @@ using VeepeeDotNerf.Data;
 namespace VeepeeDotNerf.Migrations
 {
     [DbContext(typeof(VeepeeDotNerfContext))]
-    [Migration("20200801094558_AddAddress")]
-    partial class AddAddress
+    [Migration("20200801100918_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,12 +23,6 @@ namespace VeepeeDotNerf.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("address")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("addressComplement")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("city")
                         .HasColumnType("TEXT");
@@ -46,6 +40,12 @@ namespace VeepeeDotNerf.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("lastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line2")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("phone")

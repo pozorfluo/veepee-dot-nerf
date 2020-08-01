@@ -22,12 +22,6 @@ namespace VeepeeDotNerf.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("address")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("addressComplement")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("city")
                         .HasColumnType("TEXT");
 
@@ -44,6 +38,12 @@ namespace VeepeeDotNerf.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("lastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line2")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("phone")
