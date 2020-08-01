@@ -6,6 +6,9 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
+# install alternate database provider
+dotnet add package MySql.Data.EntityFrameworkCore
+
 # export the scaffold tool path
 export PATH=$HOME/.dotnet/tools:$PATH
 
@@ -26,4 +29,4 @@ dotnet ef migrations add InitialCreate -v
 dotnet ef migrations remove -v
 
 # apply migration
-dotnet ef database update
+dotnet ef database update -v

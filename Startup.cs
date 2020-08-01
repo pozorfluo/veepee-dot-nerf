@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VeepeeDotNerf.Data;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace VeepeeDotNerf
 {
@@ -29,8 +30,9 @@ namespace VeepeeDotNerf
       services.AddControllersWithViews();
 
       services.AddDbContext<VeepeeDotNerfContext>(
-        options => options.UseSqlite(
-          Configuration.GetConnectionString("VeepeeDotNerfContext")
+        options => options.UseMySql(
+          Configuration.GetConnectionString("VeepeeDotNerfContextPom"),
+        mySqlOptions => mySqlOptions.ServerVersion(new Version(10, 3, 22), ServerType.MySql)
         )
       );
     }
