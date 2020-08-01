@@ -7,7 +7,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
 # install alternate database provider
-dotnet add package MySql.Data.EntityFrameworkCore
+dotnet add package Pomelo.EntityFrameworkCore.MySql
 
 # export the scaffold tool path
 export PATH=$HOME/.dotnet/tools:$PATH

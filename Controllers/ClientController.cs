@@ -22,7 +22,7 @@ namespace veepee_dot_nerf.Controllers
         // GET: Client
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Client.ToListAsync());
+            return View(await _context.Client.ToArrayAsync());
         }
 
         // GET: Client/Details/5
