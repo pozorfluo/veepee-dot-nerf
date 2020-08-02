@@ -67,7 +67,6 @@ namespace VeepeeDotNerf.Models
     [Column("country_id")]
     public int countryForeignKey { get; set; }
 
-    [Required]
     [ForeignKey("countryForeignKey")]
     public Country country { get; set; }
 

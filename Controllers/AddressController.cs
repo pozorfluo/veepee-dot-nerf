@@ -22,15 +22,9 @@ namespace veepee_dot_nerf.Controllers
     // GET: Address
     public async Task<IActionResult> Index()
     {
-      return View(await _context.Address.ToArrayAsync());
+      var veepeeDotNerfContext = _context.Address.Include(a => a.client).Include(a => a.country);
+      return View(await veepeeDotNerfContext.ToListAsync());
     }
-
-  
-    // // GET: Address
-    // public IActionResult Index()
-    // {
-    //     return View(_context.Address.ToArray());
-    // }
 
     // GET: Address/Details/5
     public async Task<IActionResult> Details(int? id)
@@ -41,6 +35,8 @@ namespace veepee_dot_nerf.Controllers
       }
 
       var address = await _context.Address
+          .Include(a => a.client)
+          .Include(a => a.country)
           .FirstOrDefaultAsync(m => m.Id == id);
       if (address == null)
       {
@@ -53,6 +49,8 @@ namespace veepee_dot_nerf.Controllers
     // GET: Address/Create
     public IActionResult Create()
     {
+      ViewData["clientForeignKey"] = new SelectList(_context.Client, "Id", "email");
+      ViewData["countryForeignKey"] = new SelectList(_context.Country, "Id", "name");
       return View();
     }
 
@@ -61,7 +59,8 @@ namespace veepee_dot_nerf.Controllers
     // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,type,firstName,lastName,email,line1,line2,city,zipCode,country,phone,createdAt,updatedAt")] Address address)
+    public async Task<IActionResult> Create(
+      [Bind("Id,type,firstName,lastName,email,line1,line2,city,zipCode,phone,createdAt,updatedAt,countryForeignKey,clientForeignKey")] Address address)
     {
       if (ModelState.IsValid)
       {
@@ -69,6 +68,8 @@ namespace veepee_dot_nerf.Controllers
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
       }
+      ViewData["clientForeignKey"] = new SelectList(_context.Client, "Id", "email", address.clientForeignKey);
+      ViewData["countryForeignKey"] = new SelectList(_context.Country, "Id", "name", address.countryForeignKey);
       return View(address);
     }
 
@@ -85,6 +86,8 @@ namespace veepee_dot_nerf.Controllers
       {
         return NotFound();
       }
+      ViewData["clientForeignKey"] = new SelectList(_context.Client, "Id", "email", address.clientForeignKey);
+      ViewData["countryForeignKey"] = new SelectList(_context.Country, "Id", "name", address.countryForeignKey);
       return View(address);
     }
 
@@ -93,7 +96,7 @@ namespace veepee_dot_nerf.Controllers
     // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,type,firstName,lastName,email,line1,line2,city,zipCode,country,phone,createdAt,updatedAt")] Address address)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,type,firstName,lastName,email,line1,line2,city,zipCode,phone,createdAt,updatedAt,countryForeignKey,clientForeignKey")] Address address)
     {
       if (id != address.Id)
       {
@@ -120,6 +123,8 @@ namespace veepee_dot_nerf.Controllers
         }
         return RedirectToAction(nameof(Index));
       }
+      ViewData["clientForeignKey"] = new SelectList(_context.Client, "Id", "email", address.clientForeignKey);
+      ViewData["countryForeignKey"] = new SelectList(_context.Country, "Id", "name", address.countryForeignKey);
       return View(address);
     }
 
@@ -132,6 +137,8 @@ namespace veepee_dot_nerf.Controllers
       }
 
       var address = await _context.Address
+          .Include(a => a.client)
+          .Include(a => a.country)
           .FirstOrDefaultAsync(m => m.Id == id);
       if (address == null)
       {
