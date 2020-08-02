@@ -55,9 +55,8 @@ namespace veepee_dot_nerf.Controllers
 
     // -------------------------------------------------------------------------
     // POST: Product/Create
-    // To protect from overposting attacks, enable the specific properties you 
-    // want to bind to, for more details, 
-    // see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // @todo Replace scaffolder generated binding
+    //              see https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#update-httppost-edit-method
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
@@ -94,9 +93,8 @@ namespace veepee_dot_nerf.Controllers
 
     // -------------------------------------------------------------------------
     // POST: Product/Edit/5
-    // To protect from overposting attacks, enable the specific properties you 
-    // want to bind to, for more details, 
-    // see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // @todo Replace scaffolder generated binding
+    //              see https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#update-httppost-edit-method
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(

@@ -13,17 +13,27 @@ dotnet add package Pomelo.EntityFrameworkCore.MySql
 export PATH=$HOME/.dotnet/tools:$PATH
 
 # generate crud code for Client model
-dotnet aspnet-codegenerator controller -name ClientController -m Client -dc VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+dotnet aspnet-codegenerator controller -name ClientController -m Client -dc \
+    VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout \
+    --referenceScriptLibraries
 # generate crud code for Country model
-dotnet aspnet-codegenerator controller -name CountryController -m Country -dc VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+dotnet aspnet-codegenerator controller -name CountryController -m Country -dc \
+    VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout \
+    --referenceScriptLibraries
 # generate crud code for Address model
-dotnet aspnet-codegenerator controller -name AddressController -m Address -dc VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+dotnet aspnet-codegenerator controller -name AddressController -m Address -dc \
+    VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout \
+    --referenceScriptLibraries
 # generate crud code for Product model
-dotnet aspnet-codegenerator controller -name ProductController -m Product -dc VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+dotnet aspnet-codegenerator controller -name ProductController -m Product -dc \
+    VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout \
+    --referenceScriptLibraries
 # generate crud code for Order model
-dotnet aspnet-codegenerator controller -name OrderController -m Order -dc VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+dotnet aspnet-codegenerator controller -name OrderController -m Order -dc \
+    VeepeeDotNerfContext --relativeFolderPath Controllers --useDefaultLayout \
+    --referenceScriptLibraries
 
-# get help 
+# get help
 dotnet aspnet-codegenerator controller -h
 
 # !!! shutdown app first !!!
