@@ -18,21 +18,21 @@ namespace VeepeeDotNerf
     {
       var host = CreateHostBuilder(args).Build();
 
-      using (var scope = host.Services.CreateScope())
-      {
-        var services = scope.ServiceProvider;
+      // using (var scope = host.Services.CreateScope())
+      // {
+      //   var services = scope.ServiceProvider;
 
-        try
-        {
-          Console.WriteLine("Attempting to seed the DB.");
-          SeedData.Initialize(services);
-        }
-        catch (Exception ex)
-        {
-          var logger = services.GetRequiredService<ILogger<Program>>();
-          logger.LogError(ex, "An error occured while seeding the DB.");
-        }
-      }
+      //   try
+      //   {
+      //     Console.WriteLine("Attempting to seed the DB.");
+      //     SeedData.Initialize(services);
+      //   }
+      //   catch (Exception ex)
+      //   {
+      //     var logger = services.GetRequiredService<ILogger<Program>>();
+      //     logger.LogError(ex, "An error occured while seeding the DB.");
+      //   }
+      // }
 
       host.Run();
     }

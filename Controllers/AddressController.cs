@@ -14,18 +14,24 @@ namespace veepee_dot_nerf.Controllers
   {
     private readonly VeepeeDotNerfContext _context;
 
+    // -------------------------------------------------------------------------
     public AddressController(VeepeeDotNerfContext context)
     {
       _context = context;
     }
 
+    // -------------------------------------------------------------------------
     // GET: Address
     public async Task<IActionResult> Index()
     {
-      var veepeeDotNerfContext = _context.Address.Include(a => a.client).Include(a => a.country);
-      return View(await veepeeDotNerfContext.ToListAsync());
+      var veepeeDotNerfContext = _context.Address
+        .Include(a => a.client)
+        .Include(a => a.country);
+
+      return View(await veepeeDotNerfContext.ToArrayAsync());
     }
 
+    // -------------------------------------------------------------------------
     // GET: Address/Details/5
     public async Task<IActionResult> Details(int? id)
     {
@@ -46,21 +52,32 @@ namespace veepee_dot_nerf.Controllers
       return View(address);
     }
 
+    // -------------------------------------------------------------------------
     // GET: Address/Create
     public IActionResult Create()
     {
-      ViewData["clientForeignKey"] = new SelectList(_context.Client, "Id", "email");
-      ViewData["countryForeignKey"] = new SelectList(_context.Country, "Id", "name");
+      ViewData["clientForeignKey"] = new SelectList(
+        _context.Client, "Id", "email"
+      );
+      ViewData["countryForeignKey"] = new SelectList(
+        _context.Country, "Id", "name"
+      );
+
       return View();
     }
 
+    // -------------------------------------------------------------------------
     // POST: Address/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-    // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // To protect from overposting attacks, enable the specific properties you 
+    // want to bind to, for more details, 
+    // see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-      [Bind("Id,type,firstName,lastName,email,line1,line2,city,zipCode,phone,createdAt,updatedAt,countryForeignKey,clientForeignKey")] Address address)
+      [Bind(@"Id,type,firstName,lastName,email,line1,line2,city,zipCode,phone,
+              createdAt,updatedAt,countryForeignKey,clientForeignKey")]
+      Address address
+    )
     {
       if (ModelState.IsValid)
       {
@@ -68,11 +85,18 @@ namespace veepee_dot_nerf.Controllers
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
       }
-      ViewData["clientForeignKey"] = new SelectList(_context.Client, "Id", "email", address.clientForeignKey);
-      ViewData["countryForeignKey"] = new SelectList(_context.Country, "Id", "name", address.countryForeignKey);
+
+      ViewData["clientForeignKey"] = new SelectList(
+        _context.Client, "Id", "email", address.clientForeignKey
+      );
+      ViewData["countryForeignKey"] = new SelectList(
+        _context.Country, "Id", "name", address.countryForeignKey
+      );
+
       return View(address);
     }
 
+    // -------------------------------------------------------------------------
     // GET: Address/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
@@ -86,17 +110,31 @@ namespace veepee_dot_nerf.Controllers
       {
         return NotFound();
       }
-      ViewData["clientForeignKey"] = new SelectList(_context.Client, "Id", "email", address.clientForeignKey);
-      ViewData["countryForeignKey"] = new SelectList(_context.Country, "Id", "name", address.countryForeignKey);
+
+      ViewData["clientForeignKey"] = new SelectList(
+        _context.Client, "Id", "email", address.clientForeignKey
+      );
+
+      ViewData["countryForeignKey"] = new SelectList(
+        _context.Country, "Id", "name", address.countryForeignKey
+      );
+
       return View(address);
     }
 
+    // -------------------------------------------------------------------------
     // POST: Address/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-    // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // To protect from overposting attacks, enable the specific properties you 
+    // want to bind to, for more details, 
+    // see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,type,firstName,lastName,email,line1,line2,city,zipCode,phone,createdAt,updatedAt,countryForeignKey,clientForeignKey")] Address address)
+    public async Task<IActionResult> Edit(
+      int id,
+      [Bind(@"Id,type,firstName,lastName,email,line1,line2,city,zipCode,phone,
+              createdAt,updatedAt,countryForeignKey,clientForeignKey")]
+      Address address
+    )
     {
       if (id != address.Id)
       {
@@ -123,11 +161,18 @@ namespace veepee_dot_nerf.Controllers
         }
         return RedirectToAction(nameof(Index));
       }
-      ViewData["clientForeignKey"] = new SelectList(_context.Client, "Id", "email", address.clientForeignKey);
-      ViewData["countryForeignKey"] = new SelectList(_context.Country, "Id", "name", address.countryForeignKey);
+
+      ViewData["clientForeignKey"] = new SelectList(
+        _context.Client, "Id", "email", address.clientForeignKey
+      );
+      ViewData["countryForeignKey"] = new SelectList(
+        _context.Country, "Id", "name", address.countryForeignKey
+      );
+
       return View(address);
     }
 
+    // -------------------------------------------------------------------------
     // GET: Address/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
@@ -147,7 +192,7 @@ namespace veepee_dot_nerf.Controllers
 
       return View(address);
     }
-
+    // -------------------------------------------------------------------------
     // POST: Address/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
@@ -159,6 +204,7 @@ namespace veepee_dot_nerf.Controllers
       return RedirectToAction(nameof(Index));
     }
 
+    // -------------------------------------------------------------------------
     private bool AddressExists(int id)
     {
       return _context.Address.Any(e => e.Id == id);
