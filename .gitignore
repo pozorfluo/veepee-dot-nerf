@@ -1,3 +1,7 @@
+# volatile folders
+.[Aa]rchive/
+.tmp/
+
 *.swp
 *.*~
 project.lock.json
