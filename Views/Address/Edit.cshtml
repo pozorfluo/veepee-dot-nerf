@@ -69,14 +69,24 @@
                 <span asp-validation-for="updatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="countryForeignKey" class="control-label"></label>
-                <select asp-for="countryForeignKey" class="form-control" asp-items="ViewBag.countryForeignKey"></select>
-                <span asp-validation-for="countryForeignKey" class="text-danger"></span>
+                <label asp-for="countryForeignKey" class="control-label">
+                </label>
+                <select 
+                    asp-for="countryForeignKey" 
+                    class="form-control" 
+                    asp-items="ViewBag.countryForeignKey">
+                </select>
+                <span asp-validation-for="countryForeignKey" class="text-danger">
+                </span>
             </div>
             <div class="form-group">
                 <label asp-for="clientForeignKey" class="control-label"></label>
-                <select asp-for="clientForeignKey" class="form-control" asp-items="ViewBag.clientForeignKey"></select>
-                <span asp-validation-for="clientForeignKey" class="text-danger"></span>
+                <select asp-for="clientForeignKey"
+                        class="form-control" 
+                        asp-items="ViewBag.clientForeignKey">
+                </select>
+                <span asp-validation-for="clientForeignKey" class="text-danger">
+                </span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -56,7 +56,7 @@ namespace veepee_dot_nerf.Controllers
     // -------------------------------------------------------------------------
     // POST: Product/Create
     // @todo Replace scaffolder generated binding
-    //              see https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#update-httppost-edit-method
+    //       see https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#update-httppost-edit-method
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
@@ -94,7 +94,7 @@ namespace veepee_dot_nerf.Controllers
     // -------------------------------------------------------------------------
     // POST: Product/Edit/5
     // @todo Replace scaffolder generated binding
-    //              see https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#update-httppost-edit-method
+    //       see https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#update-httppost-edit-method
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
