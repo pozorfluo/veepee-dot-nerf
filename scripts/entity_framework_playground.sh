@@ -23,7 +23,7 @@ dotnet aspnet-codegenerator controller -h
 
 # !!! shutdown app first !!!
 # prepare migration
-dotnet ef migrations add InitialCreate -v
+dotnet ef migrations add RenameTables -v
 
 # undo migration that has not been applied yet
 dotnet ef migrations remove -v
